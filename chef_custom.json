@@ -1,0 +1,68 @@
+{
+	"java": {
+		"arch": "x64",
+		"jdk_version": 8,
+		"jdk": {
+			"8": {"x64": {"url": "https://s3-eu-west-1.amazonaws.com/my-uploads-ireland/java/jdk-8u60-linux-x64.tar.gz"}}
+		},
+		"oracle": {"accept_oracle_download_terms": true}
+	},
+
+	"tomcat": {
+		"base_version": 7,
+		"java_options": "${JAVA_OPTS} -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -Xmx7G -Xms7G -XX:G1NewSizePercent=3 -XX:G1MaxNewSizePercent=30 -XX:-ResizePLAB -XX:+ParallelRefProcabled -XX:InitiatingHeapOccupancyPercent=85 -XX:G1MixedGCLiveThresholdPercent=85 -XX:ParGCCardsPerStrideChunk=32768 -XX:+AlwaysPreTouch -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+OptimizeStringConcat -XX:+UseG1GC -XX:+UseStringDeduplication -Djava.awt.headless=true",
+		"max_threads": 600,
+		
+	},
+
+	"ulimit": {
+		"limits": [
+			{
+				"domain": "*",
+				"type": "soft",
+				"item": "nofile",
+				"value": "'100000'"
+			},
+			{
+				"domain": "*",
+				"type": "hard",
+				"item": "nofile",
+				"value": "'100000'"
+			}
+		]
+	},
+
+	"sysctl": {
+		"params": {
+			"fs": {
+				"file-max": 100000
+			},
+			"vm": {
+				"swappiness": 10,
+				
+			},
+			"net": {
+				"ipv4": {
+					"ip_local_port_range": "10000 65000",
+					"tcp_rmem": "4096 87380 16777216",
+					"tcp_wmem": "4096 65536 16777216",
+					"tcp_max_syn_backlog": "30000",
+					"tcp_max_tw_buckets": "2000000",
+					"tcp_tw_reuse": "1",
+					"tcp_fin_timeout": "10",
+					"tcp_slow_start_after_idle": "0",
+					"udp_rmem_min": "8192",
+					"udp_wmem_min": "8192"
+				},
+				"core": {
+					"rmem_max": "16777216",
+					"wmem_max": "16777216",
+					"rmem_default": "16777216",
+					"wmem_default": "16777216",
+					"optmem_max": "40960",
+					"netdev_max_backlog": "50000"
+				}
+			}
+		}
+	}
+}
