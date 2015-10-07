@@ -11,8 +11,7 @@
 	"tomcat": {
 		"base_version": 7,
 		"java_options": "${JAVA_OPTS} -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -Xmx7G -Xms7G -XX:G1NewSizePercent=3 -XX:G1MaxNewSizePercent=30 -XX:-ResizePLAB -XX:+ParallelRefProcabled -XX:InitiatingHeapOccupancyPercent=85 -XX:G1MixedGCLiveThresholdPercent=85 -XX:ParGCCardsPerStrideChunk=32768 -XX:+AlwaysPreTouch -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+OptimizeStringConcat -XX:+UseG1GC -XX:+UseStringDeduplication -Djava.awt.headless=true",
-		"max_threads": 600,
-		
+		"max_threads": 600
 	},
 
 	"ulimit": {
@@ -38,8 +37,7 @@
 				"file-max": 100000
 			},
 			"vm": {
-				"swappiness": 10,
-				
+				"swappiness": 10
 			},
 			"net": {
 				"ipv4": {
