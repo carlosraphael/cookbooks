@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "sysctl": {
+      "path": "."
+    },
+    "apt": {
+      "locked_version": "2.1.0"
+    },
+    "sysctl_test": {
+      "path": "./test/cookbooks/sysctl_test"
+    },
+    "accumulator": {
+      "locked_version": "0.2.0"
+    }
+  }
+}
