@@ -11,6 +11,3 @@ version          '0.9.0'
 end
 
 recipe 'ark::default', 'Installs and configures ark'
-
-depends 'windows'
-depends '7-zip'
