@@ -1,62 +1,54 @@
 {
     "platform_family": "debian",
+    "platform": "debian",
     "java": {
-        "arch": "x64",
+        "install_flavor": "oracle",
+        "arch": "x86_64",
         "jdk_version": 8,
         "jdk": {
             "8": {
-                "x64": {
+                "x86_64": {
                     "url": "https://s3-eu-west-1.amazonaws.com/my-uploads-ireland/java/jdk-8u60-linux-x64.tar.gz"
                 }
             }
         },
         "oracle": {
             "accept_oracle_download_terms": true
-        }
+        },
+        "accept_license_agreement": true
     },
-    "tomcat": {
-        "base_version": 7,
-        "java_options": "${JAVA_OPTS} -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -Xmx7G -Xms7G -XX:G1NewSizePercent=3 -XX:G1MaxNewSizePercent=30 -XX:-ResizePLAB -XX:+ParallelRefProcabled -XX:InitiatingHeapOccupancyPercent=85 -XX:G1MixedGCLiveThresholdPercent=85 -XX:ParGCCardsPerStrideChunk=32768 -XX:+AlwaysPreTouch -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+OptimizeStringConcat -XX:+UseG1GC -XX:+UseStringDeduplication -Djava.awt.headless=true",
+    "tomcat-all": {
+        "version": "8.0.27",
+        "java_opts": "-d64 -server -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -Xmx7G -Xms7G -XX:G1NewSizePercent=3 -XX:G1MaxNewSizePercent=30 -XX:-ResizePLAB -XX:+ParallelRefProcEnabled -XX:InitiatingHeapOccupancyPercent=85 -XX:G1MixedGCLiveThresholdPercent=85 -XX:ParGCCardsPerStrideChunk=32768 -XX:+AlwaysPreTouch -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+OptimizeStringConcat -XX:+UseG1GC -XX:+UseStringDeduplication -Djava.awt.headless=true",
         "max_threads": 500
     },
-    "ulimit": {
-        "limits": [
-            {
-                "domain": "*",
-                "type": "soft",
-                "item": "nofile",
-                "value": "'100000'"
-            },
-            {
-                "domain": "*",
-                "type": "hard",
-                "item": "nofile",
-                "value": "'100000'"
-            }
-        ]
-    },
-    "sysctl": {
-        "fs.file-max": 100000,
-        "vm.swappiness": 10,
-        "net.ipv4.ip_local_port_range": "10000 65000",
-        "net.core.rmem_max": 16777216,
-        "net.core.wmem_max": 16777216,
-        "net.core.rmem_default": 16777216,
-        "net.core.wmem_default": 16777216,
-        "net.core.optmem_max": 40960,
-        "net.ipv4.tcp_rmem": "4096 87380 16777216",
-        "net.ipv4.tcp_wmem": "4096 65536 16777216",
-        "net.core.netdev_max_backlog": 50000,
-        "net.ipv4.tcp_max_syn_backlog": 30000,
-        "net.ipv4.tcp_max_tw_buckets": 2000000,
-        "net.ipv4.tcp_tw_reuse": 1,
-        "net.ipv4.tcp_fin_timeout": 10,
-        "net.ipv4.tcp_slow_start_after_idle": 0,
-        "net.ipv4.udp_rmem_min": 8192,
-        "net.ipv4.udp_wmem_min": 8192,
-        "net.ipv4.conf.all.send_redirects": 0,
-        "net.ipv4.conf.all.accept_redirects": 0,
-        "net.ipv4.conf.all.accept_source_route": 0,
-        "net.ipv4.conf.all.log_martians": 1
+    "opsworks_initial_setup": {
+        "sysctl": {
+            "fs.file-max": 100000,
+            "vm.swappiness": 10,
+            "net.ipv4.ip_local_port_range": "'10000 65000'",
+            "net.core.rmem_max": 16777216,
+            "net.core.wmem_max": 16777216,
+            "net.core.rmem_default": 16777216,
+            "net.core.wmem_default": 16777216,
+            "net.core.optmem_max": 40960,
+            "net.ipv4.tcp_rmem": "'4096 87380 16777216'",
+            "net.ipv4.tcp_wmem": "'4096 65536 16777216'",
+            "net.core.netdev_max_backlog": 50000,
+            "net.ipv4.tcp_max_syn_backlog": 30000,
+            "net.ipv4.tcp_max_tw_buckets": 2000000,
+            "net.ipv4.tcp_tw_reuse": 1,
+            "net.ipv4.tcp_fin_timeout": 10,
+            "net.ipv4.tcp_slow_start_after_idle": 0,
+            "net.ipv4.udp_rmem_min": 8192,
+            "net.ipv4.udp_wmem_min": 8192,
+            "net.ipv4.conf.all.send_redirects": 0,
+            "net.ipv4.conf.all.accept_redirects": 0,
+            "net.ipv4.conf.all.accept_source_route": 0,
+            "net.ipv4.conf.all.log_martians": 1
+        },
+        "limits": {
+            "nofile": 100000
+        }
     }
 }
